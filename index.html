@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="at.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Alternative Trap - Explore the alternative music scene and culture.">
@@ -10,8 +11,8 @@
 </head>
 <body>
     <header>
-        <h1>alternative n shit</h1>
-        <p> music scene and culture.</p>
+        <h1>Welcome to Alternative Trap</h1>
+        <p>Your destination for exploring the alternative music scene and culture.</p>
     </header>
     <nav>
         <a href="#about">About</a> | 
@@ -21,11 +22,11 @@
     <main>
         <section id="about">
             <h2>About Us</h2>
-            <p>Alternative Trap is</p>
+            <p>Alternative Trap is a platform dedicated to connecting fans with the latest in alternative music, news, and events.</p>
         </section>
         <section id="music">
             <h2>Discover Music</h2>
-            <p>sounds and artists that change the culture.</p>
+            <p>Explore new sounds and artists that push the boundaries of music.</p>
         </section>
         <section id="contact">
             <h2>Contact Us</h2>
@@ -33,7 +34,106 @@
         </section>
     </main>
     <footer>
-        <p>praise jah</p>
+        <p>&copy; 2024 Alternative Trap. All rights reserved.</p>
+        <!-- Link for CCPA opt-out -->
+        <a href="/do-not-sell-my-info" id="doNotSellLink">Do Not Sell My Personal Information</a>
     </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsentBanner">
+        <p>We use cookies to improve your experience on our site, including cookies for personalized ads and analytics. By using our website, you consent to our use of cookies. <a href="/cookie-policy" target="_blank">Learn more</a>.</p>
+        <button id="acceptCookiesBtn">Accept Cookies</button>
+        <button id="rejectCookiesBtn">Reject Personalized Ads</button>
+        <button id="optOutSaleBtn">Opt Out of Sale of Personal Data</button>
+        <a href="/privacy-policy" target="_blank">Privacy Policy</a> | <a href="/cookie-policy" target="_blank">Cookie Policy</a>
+        <button id="withdrawConsentBtn">Withdraw Consent</button>
+    </div>
+
+    <script>
+        // Check if the user has already given consent for cookies or opted out of the sale of data
+        if (localStorage.getItem("cookiesAccepted") === "true") {
+            document.getElementById("cookieConsentBanner").style.display = "none";
+        }
+
+        // Handle the "Accept Cookies" button click (GDPR)
+        document.getElementById("acceptCookiesBtn").onclick = function() {
+            localStorage.setItem("cookiesAccepted", "true");
+            localStorage.setItem("personalizedAdsConsent", "true");  // Consent for personalized ads
+            document.getElementById("cookieConsentBanner").style.display = "none";
+            // Initialize AdSense with personalized ads
+            initializeAds(true);
+        };
+
+        // Handle the "Reject Personalized Ads" button click (GDPR & CCPA)
+        document.getElementById("rejectCookiesBtn").onclick = function() {
+            localStorage.setItem("cookiesAccepted", "true");
+            localStorage.setItem("personalizedAdsConsent", "false");  // Reject personalized ads (CCPA opt-out)
+            document.getElementById("cookieConsentBanner").style.display = "none";
+            // Initialize AdSense without personalized ads
+            initializeAds(false);
+        };
+
+        // Handle the "Opt Out of Sale of Personal Data" button click (CCPA)
+        document.getElementById("optOutSaleBtn").onclick = function() {
+            localStorage.setItem("optOutSale", "true");  // User opted out of data sale
+            document.getElementById("cookieConsentBanner").style.display = "none";
+            alert("You have opted out of the sale of your personal data.");
+        };
+
+        // Handle the "Withdraw Consent" button click (GDPR)
+        document.getElementById("withdrawConsentBtn").onclick = function() {
+            // Remove consent information from localStorage
+            localStorage.removeItem("cookiesAccepted");
+            localStorage.removeItem("personalizedAdsConsent");
+            localStorage.removeItem("optOutSale");
+            document.getElementById("cookieConsentBanner").style.display = "block"; // Show the banner again
+            alert("Your consent has been withdrawn.");
+            // Reset AdSense settings
+            initializeAds(false); // Non-personalized ads or no ads if they withdraw consent
+        };
+
+        // Function to initialize Google AdSense based on user's consent
+        function initializeAds(personalizedAds) {
+            if (personalizedAds) {
+                // Load personalized ads (this is where you would load your AdSense scripts)
+                console.log("Personalized ads enabled");
+            } else {
+                // Load non-personalized ads (this would be an AdSense setup for non-personalized ads)
+                console.log("Non-personalized ads enabled");
+            }
+        }
+    </script>
 </body>
 </html>
+
+
+<h2>Privacy Policy</h2>
+<p>Effective Date: [Insert Date]</p>
+
+<p>At Alternative Trap, we respect your privacy and are committed to protecting your personal data. This Privacy Policy outlines how we collect, use, and protect your personal information, as well as your rights under applicable privacy laws, including the General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA).</p>
+
+<h3>1. Data We Collect</h3>
+<p>We collect the following types of data from users:</p>
+<ul>
+    <li><strong>Cookies</strong>: These include both necessary cookies (required for site operation) and non-essential cookies (used for personalized ads and analytics).</li>
+    <li><strong>Personal Data</strong>: We collect data such as IP addresses, user preferences, and interactions with the site.</li>
+    <li><strong>Third-Party Data</strong>: We use third-party services such as Google AdSense, which may collect cookies and personal data to provide personalized ads.</li>
+</ul>
+
+<h3>2. How We Use Your Data</h3>
+<p>Your data is used for the following purposes:</p>
+<ul>
+    <li>To provide personalized content and ads (based on your consent).</li>
+    <li>For analytics and improving the user experience.</li>
+    <li>To comply with legal obligations.</li>
+</ul>
+
+<h3>3. Your Data Rights (GDPR & CCPA)</h3>
+<p>You have the following rights regarding your personal data:</p>
+<ul>
+    <li><strong>Access</strong>: You have the right to request access to the personal data we hold about you.</li>
+    <li><strong>Correction</strong>: You can correct any inaccuracies in your personal data.</li>
+    <li><strong>Deletion</strong>: You have the right to request the deletion of your personal data. You can contact us at <strong>info@alternativetrap.org</strong> to request deletion.</li>
+    <li><strong>Opt-Out of Sale</strong>: You can opt out of the sale of your personal data at any time. [Link to Do Not Sell My Information]</li>
+    <li><strong>Withdraw Consent</strong>: You can withdraw your consent for cookies and personalized ads
+
