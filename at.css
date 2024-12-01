@@ -1,0 +1,44 @@
+x/* Navigation */
+nav {
+    text-align: center;
+    background: #1a1a1a; /* Dark grey */
+    padding: 20px 0;
+    margin-bottom: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ff0033;
+    margin: 0 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 5px;
+    transition: all 0.3s ease;
+    border: none; /* Remove border around the links */
+    background: none; /* Remove any background */
+    outline: none; /* Remove any outline */
+}
+
+nav a:hover {
+    color: #fff;
+    transform: rotate(-3deg) scale(1.1); /* Uneven, hand-drawn vibe */
+    background: none; /* Ensure no background on hover */
+}
+
+/* Specific Link Styling for About Us, Discover, and Contact Us */
+nav a[href="#about-us"],
+nav a[href="#discover"],
+nav a[href="#contact-us"] {
+    border: none; /* Remove any borders */
+    background: none; /* No background */
+    outline: none; /* No outline */
+    text-shadow: none; /* Remove any text shadow */
+}
+
+nav a[href="#about-us"]:hover,
+nav a[href="#discover"]:hover,
+nav a[href="#contact-us"]:hover {
+    color: #fff;
+    transform: rotate(-3deg) scale(1.1); /* Uneven, hand-drawn vibe */
+    background: none; /* Ensure no background on hover */
+}
