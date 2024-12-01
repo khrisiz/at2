@@ -40,7 +40,7 @@
     </footer>
 
     <!-- Cookie Consent Banner -->
-    <div id="cookieConsentBanner">
+    <div id="cookieConsentBanner" style="display:none;">
         <p>We use cookies to improve your experience on our site, including cookies for personalized ads and analytics. By using our website, you consent to our use of cookies. <a href="/cookie-policy" target="_blank">Learn more</a>.</p>
         <button id="acceptCookiesBtn">Accept Cookies</button>
         <button id="rejectCookiesBtn">Reject Personalized Ads</button>
@@ -51,8 +51,8 @@
 
     <script>
         // Check if the user has already given consent for cookies or opted out of the sale of data
-        if (localStorage.getItem("cookiesAccepted") === "true") {
-            document.getElementById("cookieConsentBanner").style.display = "none";
+        if (localStorage.getItem("cookiesAccepted") !== "true") {
+            document.getElementById("cookieConsentBanner").style.display = "block";
         }
 
         // Handle the "Accept Cookies" button click (GDPR)
@@ -106,7 +106,7 @@
 </body>
 </html>
 
-
+<!-- Privacy Policy Section -->
 <h2>Privacy Policy</h2>
 <p>Effective Date: [Insert Date]</p>
 
@@ -135,5 +135,6 @@
     <li><strong>Correction</strong>: You can correct any inaccuracies in your personal data.</li>
     <li><strong>Deletion</strong>: You have the right to request the deletion of your personal data. You can contact us at <strong>info@alternativetrap.org</strong> to request deletion.</li>
     <li><strong>Opt-Out of Sale</strong>: You can opt out of the sale of your personal data at any time. [Link to Do Not Sell My Information]</li>
-    <li><strong>Withdraw Consent</strong>: You can withdraw your consent for cookies and personalized ads
+    <li><strong>Withdraw Consent</strong>: You can withdraw your consent for cookies and personalized ads at any time.</li>
+</ul>
 
