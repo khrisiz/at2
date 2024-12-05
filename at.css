@@ -59,14 +59,14 @@ main {
     margin: 20px auto;
     padding: 20px;
     background: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
-    border: 3px dashed #ff0033;
+    border: 3px none #ff0033;
     border-radius: 15px;
 }
 
 section {
     margin-bottom: 30px;
     padding: 20px;
-    border: 3px dashed #ff0033;
+    border: 3px none #ff0033;
     background: rgba(255, 0, 51, 0.1); /* Faint Supreme red */
 }
 
