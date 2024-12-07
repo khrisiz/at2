@@ -3,232 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A fun, handmade-style website with comic-style designs.">
-    <title>Handmade Comic Style</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <meta name="description" content="IQ Test Example">
+    <title>IQ Test</title>
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Body Styling */
         body {
-            font-family: 'Bangers', sans-serif; /* Bold, comic-style font */
-            background: #0f0f0f; /* Solid black */
-            color: #ff0033; /* Neon red */
-            line-height: 1.6;
-            text-transform: uppercase;
-            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png'); /* Handmade texture */
-            background-size: 200px 200px; /* Subtle pattern */
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
         }
 
-        /* Header */
         header {
-            text-align: center;
-            background: #000; /* Solid black */
-            color: #ff0033; /* Neon red */
-            padding: 50px 20px;
-            margin-bottom: 20px;
-            border-bottom: 3px dashed #ff0033; /* Rough, handmade border style */
-            text-shadow: 2px 2px 0px #fff, -2px -2px 0px #000; /* Uneven, layered look */
-            animation: scribble 2s infinite; /* Scribble-style animation */
-        }
-
-        header h1 {
-            font-size: 4rem;
-            letter-spacing: 5px;
-            text-shadow: 2px 2px 0px #000; /* Added depth */
-        }
-
-        header p {
-            font-size: 1.2rem;
-            color: #fff;
-        }
-
-        /* Navigation */
-        nav {
-            text-align: center;
-            background: #1a1a1a; /* Dark grey */
-            padding: 20px 0;
-            border: 2px dashed #ff0033; /* Handmade dashed border */
-            margin-bottom: 30px;
-        }
-
-        nav a {
-            text-decoration: none;
+            background: #333;
             color: #ff0033;
-            margin: 0 15px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            border: 2px solid transparent;
-            padding: 5px;
-            transition: all 0.3s ease;
+            padding: 20px;
+            font-size: 2rem;
+            text-transform: uppercase;
+            border-radius: 8px;
+            margin-bottom: 20px;
         }
 
-        nav a:hover {
-            color: #fff;
-            border-color: #ff0033;
-            transform: rotate(-3deg) scale(1.1); /* Uneven, hand-drawn vibe */
-        }
-
-        /* Main Sections */
-        main {
-            max-width: 900px;
+        .quiz-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
             margin: 0 auto;
-            padding: 20px;
-            background: rgba(26, 26, 26, 0.9);
-            border-radius: 15px;
-            border: 3px dashed #ff0033; /* Handmade borders */
         }
 
-        section {
-            padding: 30px;
+        .quiz-question {
+            font-size: 1.5rem;
             margin-bottom: 20px;
-            border: 3px dashed #ff0033; /* Uneven handmade style */
-            background: rgba(255, 0, 51, 0.05); /* Faint red overlay for texture */
-            animation: bounce 1.5s ease-in-out;
         }
 
-        section h2 {
-            font-size: 2.5rem;
+        .quiz-option {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            border: 2px solid #ff0033;
+            border-radius: 5px;
+            background: #fff;
             color: #ff0033;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 0px #000;
-            animation: wiggle 2s infinite; /* Uneven, wobbly text effect */
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        section p {
-            font-size: 1.2rem;
-            color: #ccc;
-        }
-
-        /* Links */
-        a {
-            color: #ff0033;
-            text-decoration: none;
-            border-bottom: 2px solid #ff0033;
-            transition: all 0.3s ease-in-out;
-        }
-
-        a:hover {
+        .quiz-option:hover {
+            background: #ff0033;
             color: #fff;
-            border-bottom: 2px dashed #fff; /* Adds to the rough look */
-            animation: shake 0.5s ease-in-out;
+            transform: scale(1.05);
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            background: #000;
-            color: #666;
-            padding: 20px;
+        .quiz-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background: #ff0033;
+            color: #fff;
             font-size: 1rem;
-            letter-spacing: 2px;
-            border-top: 3px dashed #ff0033;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
         }
 
-        /* Keyframe Animations */
-        /* Scribble Effect */
-        @keyframes scribble {
-            0%, 100% {
-                text-shadow: 2px 2px 0px #fff, -2px -2px 0px #000;
-            }
-            50% {
-                text-shadow: 3px 3px 0px #ff0033, -3px -3px 0px #fff;
-            }
+        .quiz-btn:hover {
+            background: #e6002e;
+            transform: scale(1.1);
         }
 
-        /* Wiggle Effect */
-        @keyframes wiggle {
-            0%, 100% {
-                transform: rotate(0deg);
-            }
-            25% {
-                transform: rotate(2deg);
-            }
-            50% {
-                transform: rotate(-2deg);
-            }
-            75% {
-                transform: rotate(1deg);
-            }
-        }
-
-        /* Bounce Effect */
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        /* Shake Effect */
-        @keyframes shake {
-            0% {
-                transform: translate(1px, 1px) rotate(0deg);
-            }
-            25% {
-                transform: translate(-1px, -2px) rotate(-1deg);
-            }
-            50% {
-                transform: translate(-3px, 0px) rotate(1deg);
-            }
-            75% {
-                transform: translate(3px, 2px) rotate(0deg);
-            }
-            100% {
-                transform: translate(1px, -1px) rotate(-1deg);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 3rem;
-            }
-
-            nav a {
-                display: block;
-                margin: 10px 0;
-            }
-
-            section h2 {
-                font-size: 2rem;
-            }
+        .quiz-result {
+            font-size: 1.8rem;
+            margin-top: 30px;
+            color: #ffcc33;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Fun Page!</h1>
-        <p>Handmade vibes, comic style, and bold energy!</p>
+        IQ Test
     </header>
-    <nav>
-        <a href="#section1">Home</a>
-        <a href="#section2">About</a>
-        <a href="#section3">Contact</a>
-    </nav>
-    <main>
-        <section id="section1">
-            <h2>Home</h2>
-            <p>Welcome to the coolest website ever! We’ve got textures, vibes, and all the neon red you could ask for.</p>
-        </section>
-        <section id="section2">
-            <h2>About</h2>
-            <p>Our mission is to create bold and fun designs that stand out. Enjoy our unique handmade style!</p>
-        </section>
-        <section id="section3">
-            <h2>Contact</h2>
-            <p>Got questions? Feel free to reach out! We’d love to hear from you.</p>
-        </section>
-    </main>
-    <footer>
-        &copy; 2024 Handmade Comic Style. All Rights Reserved.
-    </footer>
+    <div class="quiz-container">
+        <div class="quiz-question" id="question"></div>
+        <div id="options"></div>
+        <button class="quiz-btn" id="next-btn">Next</button>
+        <div id="result" class="quiz-result"></div>
+    </div>
+
+    <script>
+        const quizQuestions = [
+            {
+                question: "What is 2 + 2?",
+                options: ["3", "4", "5", "6"],
+                correct: 1,
+            },
+            {
+                question: "Which shape has 4 sides?",
+                options: ["Circle", "Triangle", "Square", "Pentagon"],
+                correct: 2,
+            },
+            {
+                question: "What comes next in the sequence: 1, 1, 2, 3, 5?",
+                options: ["7", "8", "9", "10"],
+                correct: 1,
+            },
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        const questionElement = document.getElementById('question');
+        const optionsElement = document.getElementById('options');
+        const nextButton = document.getElementById('next-btn');
+        const resultElement = document.getElementById('result');
+
+        const renderQuestion = () => {
+            const questionData = quizQuestions[currentQuestionIndex];
+            questionElement.textContent = questionData.question;
+            optionsElement.innerHTML = questionData.options
+                .map(
+                    (option, index) =>
+                        `<button class="quiz-option" data-index="${index}">${option}</button>`
+                )
+                .join('');
+            attachOptionListeners();
+        };
+
+        const attachOptionListeners = () => {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.addEventListener('click', (e) => {
+                    const selectedIndex = parseInt(e.target.dataset.index);
+                    if (selectedIndex === quizQuestions[currentQuestionIndex].correct) {
+                        score++;
+                    }
+                    disableOptions();
+                });
+            });
+        };
+
+        const disableOptions = () => {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.disabled = true;
+            });
+        };
+
+        const displayResult = () => {
+            resultElement.textContent = `Your Score: ${score} / ${quizQuestions.length}`;
+            nextButton.style.display = 'none';
+        };
+
+        nextButton.addEventListener('click', () => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizQuestions.length) {
+                renderQuestion();
+            } else {
+                displayResult();
+            }
+        });
+
+        renderQuestion();
+    </script>
 </body>
 </html>
+
