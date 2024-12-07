@@ -3,41 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="IQ Test Example">
-    <title>IQ Test</title>
+    <meta name="description" content="Alternative IQ Test">
+    <title>Alternative IQ Test</title>
     
-    <!-- Google Font Bebas Neue -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <!-- Google Font Bebas Neue & Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background: #f4f4f9;
-            color: #333;
+            font-family: 'Poppins', sans-serif;
+            background: #222;  /* Dark background */
+            color: #fff;
             text-align: center;
-            padding: 20px;
+            padding: 40px;
             margin: 0;
+            font-weight: 300;
         }
 
         header {
             font-family: 'Bebas Neue', sans-serif;
-            background: #333;
-            color: #ff0033;
-            padding: 20px;
-            font-size: 2.5rem;
+            background: rgba(255, 0, 51, 0.9);  /* Neon Red */
+            color: #fff;
+            padding: 30px;
+            font-size: 3rem;
             text-transform: uppercase;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            animation: fadeIn 1s ease-out;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 8px 25px rgba(255, 0, 51, 0.3);  /* Glowing shadow */
         }
 
         .quiz-container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);  /* Semi-transparent black background */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+            max-width: 700px;
             margin: 0 auto;
             opacity: 0;
             animation: fadeIn 1s ease-out forwards;
@@ -45,44 +47,56 @@
 
         .quiz-question {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #ff0033;  /* Neon Red */
+            text-shadow: 2px 2px 5px #ff0033;  /* Red glow */
+            background: rgba(0, 0, 0, 0.7);  /* Darker background */
+            backdrop-filter: blur(6px);
+            padding: 20px;
+            border-radius: 12px;
             margin-bottom: 20px;
-            opacity: 0;
-            animation: slideUp 1s ease-out forwards;
         }
 
         .quiz-option {
             font-family: 'Bebas Neue', sans-serif;
             display: block;
-            margin: 10px 0;
-            padding: 15px;
+            margin: 15px 0;
+            padding: 18px;
             border: 2px solid #ff0033;
-            border-radius: 5px;
-            background: #fff;
+            border-radius: 8px;
+            background: transparent;
             color: #ff0033;
             cursor: pointer;
-            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.2rem;
+            transition: all 0.4s ease;
             opacity: 0;
             animation: popUp 1s ease-out forwards;
+            box-shadow: 0 0 15px rgba(255, 0, 51, 0.4);
         }
 
         .quiz-option:hover {
             background: #ff0033;
             color: #fff;
             transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 0, 51, 0.8);
         }
 
         .quiz-btn {
-            margin-top: 20px;
-            padding: 10px 20px;
+            margin-top: 30px;
+            padding: 18px 30px;
             border: none;
             background: #ff0033;
             color: #fff;
-            font-size: 1rem;
+            font-size: 1.5rem;
             text-transform: uppercase;
+            letter-spacing: 2px;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 10px;
             transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 0, 51, 0.6);
             opacity: 0;
             animation: fadeIn 1s ease-out forwards;
         }
@@ -90,12 +104,19 @@
         .quiz-btn:hover {
             background: #e6002e;
             transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(255, 0, 51, 0.8);
         }
 
         .quiz-result {
-            font-size: 1.8rem;
-            margin-top: 30px;
-            color: #ffcc33;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-top: 40px;
+            color: #ffcc33;  /* Neon Yellow */
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            border-radius: 12px;
+            text-shadow: 2px 2px 5px #ffcc33;  /* Yellow glow */
         }
 
         /* Animations */
@@ -104,20 +125,32 @@
             100% { opacity: 1; }
         }
 
-        @keyframes slideUp {
-            0% { transform: translateY(20px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
         @keyframes popUp {
             0% { transform: scale(0.8); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Glitch Text Animation */
+        @keyframes glitch {
+            0% {
+                text-shadow: 1px 1px 5px rgba(255, 0, 51, 0.8), -1px -1px 5px rgba(255, 0, 51, 0.8);
+            }
+            50% {
+                text-shadow: -2px -2px 6px rgba(255, 0, 51, 0.8), 2px 2px 6px rgba(255, 0, 51, 0.8);
+            }
+            100% {
+                text-shadow: 1px 1px 5px rgba(255, 0, 51, 0.8), -1px -1px 5px rgba(255, 0, 51, 0.8);
+            }
+        }
+
+        header {
+            animation: glitch 1s infinite alternate;
         }
     </style>
 </head>
 <body>
     <header>
-        This is not your self-worth
+        **This is not your self-worth**
     </header>
     <div class="quiz-container">
         <div class="quiz-question" id="question"></div>
@@ -154,13 +187,17 @@
         const renderQuestion = () => {
             const questionData = quizQuestions[currentQuestionIndex];
             questionElement.textContent = questionData.question;
+
+            // Using template literals to dynamically generate options
             optionsElement.innerHTML = questionData.options
                 .map(
-                    (option, index) =>
-                        `<button class="quiz-option" data-index="${index}">${option}</button>`
+                    (option, index) => {
+                        return `<button class="quiz-option" data-index="${index}">${option}</button>`;
+                    }
                 )
-                .join('');
-            attachOptionListeners();
+                .join(''); // Join the array of options into a single string
+
+            attachOptionListeners(); // Attach event listeners for the options
         };
 
         const attachOptionListeners = () => {
@@ -196,8 +233,7 @@
             resultElement.textContent = `Your Score: ${score} / ${quizQuestions.length}`;
         };
 
-        renderQuestion();
+        renderQuestion(); // Start the quiz by rendering the first question
     </script>
 </body>
 </html>
-
