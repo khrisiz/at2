@@ -8,7 +8,7 @@
 /* Body Styling */
 body {
     font-family: 'Bebas Neue', sans-serif; /* Bold, uppercase style */
-    background: linear-gradient(135deg, #121212, #2b2b2b); /* Dark, gritty background */
+    background: linear-gradient(135deg, #000000, #000000); /* Dark, gritty background */
     color: #ffffff; /* Crisp white text */
     text-transform: uppercase; /* Bold streetwear vibe */
     line-height: 1.6;
@@ -30,7 +30,7 @@ header {
 nav {
     text-align: center;
     padding: 20px 0;
-    background: #1a1a1a;
+    background: #000;
     border-top: 3px solid #ff0033;
     border-bottom: 3px solid #ff0033;
 }
@@ -50,7 +50,7 @@ nav a:hover {
     color: #fff;
     background: #ff0033;
     border-color: #fff;
-    transform: scale(1.1) rotate(-2deg);
+    
 }
 
 /* Main Sections */
@@ -58,7 +58,7 @@ main {
     max-width: 900px;
     margin: 20px auto;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent black */
     border: 3px none #ff0033;
     border-radius: 15px;
 }
@@ -104,23 +104,30 @@ footer a:hover {
 }
 
 /* Buttons */
+/* Neon Button Styling */
 button {
-    background: #ff0033;
-    color: #fff;
-    border: 2px solid #000;
-    padding: 10px 20px;
+    background: #000; /* Dark background */
+    color: #ff0033; /* Neon red text */
+    border: 2px solid #ffffff; /* Matching border color */
+    padding: 12px 25px;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1rem;
     text-transform: uppercase;
+    text-shadow: 0 0 10px #ff0033, 0 0 15px #ff0033, 0 0 25px #ff0033; /* More intense neon glow for text */
     cursor: pointer;
+    position: relative;
     transition: all 0.3s ease;
+    box-shadow: 0 0 5px #ff0033, 0 0 10px #ff0033, 0 0 20px #ff0033, 0 0 30px #ff0033; /* Neon glow effect */
 }
 
+/* Hover Effect for Neon Glow */
 button:hover {
-    background: #fff;
-    color: #ff0033;
-    border-color: #ff0033;
-    transform: scale(1.1);
+    background: #ff0033; /* Neon red background when hovered */
+    color: #000; /* Black text when hovered */
+    border-color: #fff; /* White border on hover */
+    text-shadow: 0 0 10px #ff0033, 0 0 15px #ff0033, 0 0 25px #ff0033; /* More intense neon glow for text */
+    box-shadow: 0 0 15px #ff0033, 0 0 25px #ff0033, 0 0 35px #ff0033, 0 0 50px #ff0033; /* Stronger neon glow */
+    transform: scale(1.05); /* Slight scale-up effect */
 }
 
 /* Cookie Consent Banner */
