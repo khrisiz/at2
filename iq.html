@@ -88,27 +88,28 @@
         }
 
         .quiz-btn {
-            margin-top: 30px;
-            padding: 18px 30px;
-            border: none;
-            background: #ff0033;
-            color: #fff;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(255, 0, 51, 0.6);
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards;
-        }
+    margin-top: 30px;
+    padding: 18px 30px;
+    border: none;
+    background: rgba(255, 0, 51, 0.5); /* Semi-transparent red */
+    color: #fff;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 0, 51, 0.6);
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+}
 
-        .quiz-btn:hover {
-            background: #e6002e;
-            transform: scale(1.1);
-            box-shadow: 0 0 25px rgba(255, 0, 51, 0.8);
-        }
+.quiz-btn:hover {
+    background: rgba(255, 0, 51, 0.8); /* Slightly more opaque red on hover */
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 0, 51, 0.8);
+}
+        
 
         .quiz-result {
             font-family: 'Bebas Neue', sans-serif;
