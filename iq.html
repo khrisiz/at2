@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,22 +21,21 @@
         }
 
         header {
-    text-align: center;
-    background: #000; /* Solid black */
-    color: #ff0033; /* Supreme red */
-    padding: 50px 20px;
-    border-bottom: 3px border-image-outset #ff0000;
-    text-shadow: 2px 2px 0px #dd71a3, -2px -2px 0px #000; /* Edgy layered look */
-    font-size: 3rem;
-    letter-spacing: 5px; /* Extra spacing for bold typography */
-    font-family: 'Bebas Neue', sans-serif; /* Ensures the font is Bebas Neue */
-    text-transform: uppercase; /* Ensures uppercase text */
-    margin-bottom: 30px;
-    border-radius: 12px;
-    backdrop-filter: blur(5px); /* Optional backdrop effect */
-    box-shadow: 0 8px 25px rgba(255, 0, 51, 0.3); /* Glowing shadow */
-}
-
+            text-align: center;
+            background: #000; /* Solid black */
+            color: #ff0033; /* Supreme red */
+            padding: 50px 20px;
+            border-bottom: 3px border-image-outset #ff0000;
+            text-shadow: 2px 2px 0px #dd71a3, -2px -2px 0px #000; /* Edgy layered look */
+            font-size: 3rem;
+            letter-spacing: 5px; /* Extra spacing for bold typography */
+            font-family: 'Bebas Neue', sans-serif; /* Ensures the font is Bebas Neue */
+            text-transform: uppercase; /* Ensures uppercase text */
+            margin-bottom: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(5px); /* Optional backdrop effect */
+            box-shadow: 0 8px 25px rgba(255, 0, 51, 0.3); /* Glowing shadow */
+        }
 
         .quiz-container {
             background: rgb(0, 0, 0);  /* Semi-transparent black background */
@@ -161,264 +159,265 @@
         <div class="quiz-question" id="question"></div>
         <div id="options"></div>
         <div id="result" class="quiz-result"></div>
+        <button class="quiz-btn" id="next-btn">Next</button>  <!-- Added the Next button -->
     </div>
 
     <script>
      const quizQuestions = [
-    // Pattern and Sequence Questions
-    {
-        question: "What comes next in the sequence: 1, 1, 2, 3, 5, 8, ?",
-        options: ["10", "11", "12", "13"],
-        correct: 3,
-    },
-    {
-        question: "What comes next in the sequence: 2, 6, 12, 20, 30, ?",
-        options: ["42", "40", "45", "44"],
-        correct: 0,
-    },
-    {
-        question: "Which number logically completes this series: 3, 6, 9, 12, ?",
-        options: ["15", "13", "14", "16"],
-        correct: 0,
-    },
-    {
-        question: "What comes next in the sequence: 2, 3, 5, 7, 11, ?",
-        options: ["13", "14", "15", "16"],
-        correct: 0,
-    },
-    {
-        question: "What comes next in the series: 1, 4, 9, 16, ?",
-        options: ["24", "25", "36", "49"],
-        correct: 1,
-    },
+        // Pattern and Sequence Questions
+        {
+            question: "What comes next in the sequence: 1, 1, 2, 3, 5, 8, ?",
+            options: ["10", "11", "12", "13"],
+            correct: 3,
+        },
+        {
+            question: "What comes next in the sequence: 2, 6, 12, 20, 30, ?",
+            options: ["42", "40", "45", "44"],
+            correct: 0,
+        },
+        {
+            question: "Which number logically completes this series: 3, 6, 9, 12, ?",
+            options: ["15", "13", "14", "16"],
+            correct: 0,
+        },
+        {
+            question: "What comes next in the sequence: 2, 3, 5, 7, 11, ?",
+            options: ["13", "14", "15", "16"],
+            correct: 0,
+        },
+        {
+            question: "What comes next in the series: 1, 4, 9, 16, ?",
+            options: ["24", "25", "36", "49"],
+            correct: 1,
+        },
 
-    // Logical Reasoning and Relationships
-    {
-        question: "If all roses are flowers, and some flowers fade quickly, can we conclude that all roses fade quickly?",
-        options: ["Yes", "No", "Maybe", "Not enough information"],
-        correct: 1,
-    },
-    {
-        question: "Which number does not belong? 5, 8, 12, 15, 18, 22",
-        options: ["5", "8", "12", "22"],
-        correct: 3,
-    },
-    {
-        question: "Which of the following is the odd one out? 1, 4, 9, 16, 23",
-        options: ["1", "4", "9", "23"],
-        correct: 3,
-    },
-    {
-        question: "What comes next in the pattern? 1, 3, 6, 10, 15, ?",
-        options: ["21", "22", "19", "17"],
-        correct: 0,
-    },
-    {
-        question: "Which number should come next in the sequence: 2, 5, 10, 17, 26, ?",
-        options: ["39", "37", "38", "40"],
-        correct: 0,
-    },
+        // Logical Reasoning and Relationships
+        {
+            question: "If all roses are flowers, and some flowers fade quickly, can we conclude that all roses fade quickly?",
+            options: ["Yes", "No", "Maybe", "Not enough information"],
+            correct: 1,
+        },
+        {
+            question: "Which number does not belong? 5, 8, 12, 15, 18, 22",
+            options: ["5", "8", "12", "22"],
+            correct: 3,
+        },
+        {
+            question: "Which of the following is the odd one out? 1, 4, 9, 16, 23",
+            options: ["1", "4", "9", "23"],
+            correct: 3,
+        },
+        {
+            question: "What comes next in the pattern? 1, 3, 6, 10, 15, ?",
+            options: ["21", "22", "19", "17"],
+            correct: 0,
+        },
+        {
+            question: "Which number should come next in the sequence: 2, 5, 10, 17, 26, ?",
+            options: ["39", "37", "38", "40"],
+            correct: 0,
+        },
 
-    // Word Puzzles and Verbal Reasoning
-    {
-        question: "Which word is the odd one out? Apple, Banana, Grape, Carrot",
-        options: ["Apple", "Banana", "Grape", "Carrot"],
-        correct: 3,
-    },
-    {
-        question: "Rearrange the letters to form a word: LAGHE",
-        options: ["HELGA", "ALLEG", "HEGAL", "GHEAL"],
-        correct: 0,
-    },
-    {
-        question: "Which of the following words does not belong with the others? Earth, Mars, Venus, Sun",
-        options: ["Earth", "Mars", "Venus", "Sun"],
-        correct: 3,
-    },
-    {
-        question: "Which word is the odd one out? Dog, Cat, Bird, Car",
-        options: ["Dog", "Cat", "Bird", "Car"],
-        correct: 3,
-    },
-    {
-        question: "What is the odd word out? Moon, Star, Sky, Ocean",
-        options: ["Moon", "Star", "Sky", "Ocean"],
-        correct: 3,
-    },
+        // Word Puzzles and Verbal Reasoning
+        {
+            question: "Which word is the odd one out? Apple, Banana, Grape, Carrot",
+            options: ["Apple", "Banana", "Grape", "Carrot"],
+            correct: 3,
+        },
+        {
+            question: "Rearrange the letters to form a word: LAGHE",
+            options: ["HELGA", "ALLEG", "HEGAL", "GHEAL"],
+            correct: 0,
+        },
+        {
+            question: "Which of the following words does not belong with the others? Earth, Mars, Venus, Sun",
+            options: ["Earth", "Mars", "Venus", "Sun"],
+            correct: 3,
+        },
+        {
+            question: "Which word is the odd one out? Dog, Cat, Bird, Car",
+            options: ["Dog", "Cat", "Bird", "Car"],
+            correct: 3,
+        },
+        {
+            question: "What is the odd word out? Moon, Star, Sky, Ocean",
+            options: ["Moon", "Star", "Sky", "Ocean"],
+            correct: 3,
+        },
 
-    // Analogies
-    {
-        question: "Book is to Reading as Fork is to:",
-        options: ["Drawing", "Writing", "Eating", "Reading"],
-        correct: 2,
-    },
-    {
-        question: "Finger is to Hand as Toe is to:",
-        options: ["Foot", "Leg", "Knee", "Ankle"],
-        correct: 0,
-    },
-    {
-        question: "Lions are to Tigers as Cats are to:",
-        options: ["Dogs", "Elephants", "Rats", "Kittens"],
-        correct: 3,
-    },
-    {
-        question: "Bird is to Fly as Fish is to:",
-        options: ["Swim", "Jump", "Climb", "Run"],
-        correct: 0,
-    },
-    {
-        question: "Man is to Woman as King is to:",
-        options: ["Queen", "Prince", "Princess", "Empress"],
-        correct: 0,
-    },
+        // Analogies
+        {
+            question: "Book is to Reading as Fork is to:",
+            options: ["Drawing", "Writing", "Eating", "Reading"],
+            correct: 2,
+        },
+        {
+            question: "Finger is to Hand as Toe is to:",
+            options: ["Foot", "Leg", "Knee", "Ankle"],
+            correct: 0,
+        },
+        {
+            question: "Lions are to Tigers as Cats are to:",
+            options: ["Dogs", "Elephants", "Rats", "Kittens"],
+            correct: 3,
+        },
+        {
+            question: "Bird is to Fly as Fish is to:",
+            options: ["Swim", "Jump", "Climb", "Run"],
+            correct: 0,
+        },
+        {
+            question: "Man is to Woman as King is to:",
+            options: ["Queen", "Prince", "Princess", "Empress"],
+            correct: 0,
+        },
 
-    // Math Puzzles
-    {
-        question: "What is the value of x in the equation: 3x + 5 = 20?",
-        options: ["5", "4", "3", "6"],
-        correct: 1,
-    },
-    {
-        question: "What is 16 ÷ 4 + 3?",
-        options: ["4", "5", "7", "6"],
-        correct: 1,
-    },
-    {
-        question: "What is the next number in this sequence: 100, 90, 80, 70, ?",
-        options: ["60", "50", "40", "30"],
-        correct: 0,
-    },
-    {
-        question: "If you add 5 to 100 and then divide by 5, what do you get?",
-        options: ["21", "20", "25", "22"],
-        correct: 1,
-    },
-    {
-        question: "What is 7 times 6?",
-        options: ["42", "48", "44", "50"],
-        correct: 0,
-    },
+        // Math Puzzles
+        {
+            question: "What is the value of x in the equation: 3x + 5 = 20?",
+            options: ["5", "4", "3", "6"],
+            correct: 1,
+        },
+        {
+            question: "What is 16 ÷ 4 + 3?",
+            options: ["4", "5", "7", "6"],
+            correct: 1,
+        },
+        {
+            question: "What is the next number in this sequence: 100, 90, 80, 70, ?",
+            options: ["60", "50", "40", "30"],
+            correct: 0,
+        },
+        {
+            question: "If you add 5 to 100 and then divide by 5, what do you get?",
+            options: ["21", "20", "25", "22"],
+            correct: 1,
+        },
+        {
+            question: "What is 7 times 6?",
+            options: ["42", "48", "44", "50"],
+            correct: 0,
+        },
 
-    // Number Puzzles
-    {
-        question: "Which number is missing in the series: 1, 4, 9, 16, 25, ?",
-        options: ["35", "30", "36", "40"],
-        correct: 2,
-    },
-    {
-        question: "If the pattern continues, what is the next number in the series: 2, 5, 10, 17, 26, ?",
-        options: ["39", "44", "50", "37"],
-        correct: 0,
-    },
-    {
-        question: "Which number does not belong? 7, 11, 14, 18, 21",
-        options: ["7", "11", "14", "18"],
-        correct: 3,
-    },
-    {
-        question: "What comes next in the sequence: 1, 3, 5, 7, ?",
-        options: ["9", "8", "10", "6"],
-        correct: 0,
-    },
-    {
-        question: "What is the next number in the series: 2, 3, 5, 7, 11, ?",
-        options: ["13", "12", "15", "17"],
-        correct: 0,
-    },
+        // Number Puzzles
+        {
+            question: "Which number is missing in the series: 1, 4, 9, 16, 25, ?",
+            options: ["35", "30", "36", "40"],
+            correct: 2,
+        },
+        {
+            question: "If the pattern continues, what is the next number in the series: 2, 5, 10, 17, 26, ?",
+            options: ["39", "44", "50", "37"],
+            correct: 0,
+        },
+        {
+            question: "Which number does not belong? 7, 11, 14, 18, 21",
+            options: ["7", "11", "14", "18"],
+            correct: 3,
+        },
+        {
+            question: "What comes next in the sequence: 1, 3, 5, 7, ?",
+            options: ["9", "8", "10", "6"],
+            correct: 0,
+        },
+        {
+            question: "What is the next number in the series: 2, 3, 5, 7, 11, ?",
+            options: ["13", "12", "15", "17"],
+            correct: 0,
+        },
 
-    // Spatial Awareness
-    {
-        question: "Which figure is different from the others?",
-        options: ["Circle", "Square", "Triangle", "Cube"],
-        correct: 3,
-    },
-    {
-        question: "Which of these shapes is symmetrical?",
-        options: ["Circle", "Square", "Triangle", "Rectangle"],
-        correct: 1,
-    },
-    {
-        question: "Which shape is the odd one out? Square, Circle, Rectangle, Triangle",
-        options: ["Square", "Circle", "Rectangle", "Triangle"],
-        correct: 1,
-    },
-    {
-        question: "What object would fill the blank space in this pattern?",
-        options: ["Hexagon", "Square", "Rectangle", "Circle"],
-        correct: 0,
-    },
-    {
-        question: "If a triangle has 3 sides, a square has 4, and a pentagon has 5, how many sides does an octagon have?",
-        options: ["6", "8", "7", "10"],
-        correct: 1,
-    },
-];
+        // Spatial Awareness
+        {
+            question: "Which figure is different from the others?",
+            options: ["Circle", "Square", "Triangle", "Cube"],
+            correct: 3,
+        },
+        {
+            question: "Which of these shapes is symmetrical?",
+            options: ["Circle", "Square", "Triangle", "Rectangle"],
+            correct: 1,
+        },
+        {
+            question: "Which shape is the odd one out? Square, Circle, Rectangle, Triangle",
+            options: ["Square", "Circle", "Rectangle", "Triangle"],
+            correct: 1,
+        },
+        {
+            question: "What object would fill the blank space in this pattern?",
+            options: ["Hexagon", "Square", "Rectangle", "Circle"],
+            correct: 0,
+        },
+        {
+            question: "If a triangle has 3 sides, a square has 4, and a pentagon has 5, how many sides does an octagon have?",
+            options: ["6", "8", "7", "10"],
+            correct: 1,
+        },
+    ];
 
-let currentQuestionIndex = 0;
-let score = 0;
+    let currentQuestionIndex = 0;
+    let score = 0;
 
-// Randomly shuffle the questions and pick the first 5 questions
-const shuffleQuestions = () => {
-    const shuffled = quizQuestions.sort(() => 0.5 - Math.random()); // Shuffle the array
-    return shuffled.slice(0, 5); // Take only the first 5
-};
+    // Randomly shuffle the questions and pick the first 5 questions
+    const shuffleQuestions = () => {
+        const shuffled = quizQuestions.sort(() => 0.5 - Math.random()); // Shuffle the array
+        return shuffled.slice(0, 5); // Take only the first 5
+    };
 
-const randomQuestions = shuffleQuestions();
+    const randomQuestions = shuffleQuestions();
 
-const questionElement = document.getElementById('question');
-const optionsElement = document.getElementById('options');
-const nextButton = document.getElementById('next-btn');
-const resultElement = document.getElementById('result');
+    const questionElement = document.getElementById('question');
+    const optionsElement = document.getElementById('options');
+    const nextButton = document.getElementById('next-btn');
+    const resultElement = document.getElementById('result');
 
-const renderQuestion = () => {
-    const questionData = randomQuestions[currentQuestionIndex];
-    questionElement.textContent = questionData.question;
-    optionsElement.innerHTML = questionData.options
-        .map(
-            (option, index) =>
-                `<button class="quiz-option" data-index="${index}">${option}</button>`
-        )
-        .join('');
-    attachOptionListeners();
-};
+    const renderQuestion = () => {
+        const questionData = randomQuestions[currentQuestionIndex];
+        questionElement.textContent = questionData.question;
+        optionsElement.innerHTML = questionData.options
+            .map(
+                (option, index) =>
+                    `<button class="quiz-option" data-index="${index}">${option}</button>`
+            )
+            .join('');
+        attachOptionListeners();
+    };
 
-const attachOptionListeners = () => {
-    const options = document.querySelectorAll('.quiz-option');
-    options.forEach(option => {
-        option.addEventListener('click', (e) => {
-            const selectedIndex = parseInt(e.target.dataset.index);
-            if (selectedIndex === randomQuestions[currentQuestionIndex].correct) {
-                score++;
-            }
-            disableOptions();
+    const attachOptionListeners = () => {
+        const options = document.querySelectorAll('.quiz-option');
+        options.forEach(option => {
+            option.addEventListener('click', (e) => {
+                const selectedIndex = parseInt(e.target.dataset.index);
+                if (selectedIndex === randomQuestions[currentQuestionIndex].correct) {
+                    score++;
+                }
+                disableOptions();
+            });
         });
+    };
+
+    const disableOptions = () => {
+        const options = document.querySelectorAll('.quiz-option');
+        options.forEach(option => {
+            option.disabled = true;
+        });
+    };
+
+    const displayResult = () => {
+        resultElement.textContent = `Your Score: ${score} / ${randomQuestions.length}`;
+        nextButton.style.display = 'none';
+    };
+
+    nextButton.addEventListener('click', () => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < randomQuestions.length) {
+            renderQuestion();
+        } else {
+            displayResult();
+        }
     });
-};
 
-const disableOptions = () => {
-    const options = document.querySelectorAll('.quiz-option');
-    options.forEach(option => {
-        option.disabled = true;
-    });
-};
-
-const displayResult = () => {
-    resultElement.textContent = `Your Score: ${score} / ${randomQuestions.length}`;
-    nextButton.style.display = 'none';
-};
-
-nextButton.addEventListener('click', () => {
-    currentQuestionIndex++;
-    if (currentQuestionIndex < randomQuestions.length) {
-        renderQuestion();
-    } else {
-        displayResult();
-    }
-});
-
-renderQuestion();
-
-    </script>
+    renderQuestion();
+</script>
 </body>
 </html>
+
