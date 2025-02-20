@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Chat Roulette</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #localVideo, #remoteVideo {
+            width: 300px;
+            height: 300px;
+            background-color: black;
+            margin: 10px;
+        }
+        button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <video id="localVideo" autoplay muted></video>
+        <video id="remoteVideo" autoplay></video>
+        <br>
+        <button id="startButton">Start</button>
+    </div>
+
+    <script>
+        const startButton = document.getElementById('startButton');
+        const localVideo = document.getElementById('localVideo');
+        const remoteVideo = document.getElementById('remoteVideo');
+
+        let localStream;
+        let remoteStream;
+        let peerConnection;
+
+        const servers = {
+            iceServers: [
+                {
+                    urls: 'stun:stun.l.google.com:19302'
+                }
+            ]
+        };
+
+        const constraints = {
+            video: true,
+            audio: true
+        };
+
+        const ws = new WebSocket('wss://your-signaling-server-url');
+
+        ws.onmessage = async (message) => {
+            const data = JSON.parse(message.data);
+            if (data.type === 'offer') {
+                await handleOffer(data.offer);
+            } else if (data.type === 'answer') {
+                await handleAnswer(data.answer);
+            } else if (data.type === 'candidate') {
+                await handleCandidate(data.candidate);
+            }
+        };
+
+        startButton.onclick = async () => {
+            localStream = await navigator.mediaDevices.getUserMedia(constraints);
+            localVideo.srcObject = localStream;
+
+            peerConnection = new RTCPeerConnection(servers);
+
+            localStream.getTracks().forEach(track => {
+                peerConnection.addTrack(track, localStream);
+            });
+
+            peerConnection.ontrack = (event) => {
+                [remoteStream] = event.streams;
+                remoteVideo.srcObject = remoteStream;
+            };
+
+            peerConnection.onicecandidate = (event) => {
+                if (event.candidate) {
+                    ws.send(JSON.stringify({ type: 'candidate', candidate: event.candidate }));
+                }
+            };
+
+            const offer = await peerConnection.createOffer();
+            await peerConnection.setLocalDescription(offer);
+
+            ws.send(JSON.stringify({ type: 'offer', offer: offer }));
+        };
+
+        async function handleOffer(offer) {
+            await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+
+            const answer = await peerConnection.createAnswer();
+            await peerConnection.setLocalDescription(answer);
+
+            ws.send(JSON.stringify({ type: 'answer', answer: answer }));
+        }
+
+        async function handleAnswer(answer) {
+            await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
+        }
+
+        async function handleCandidate(candidate) {
+            await peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
+        }
+    </script>
+</body>
+</html>
