@@ -38,21 +38,14 @@ header {
     100% { text-shadow: 2px 2px 0px #ff0000, -2px -2px 0px #fff; }
 }
 
-/* Navigation (Floating Effect) */
+/* Navigation (No Floating Effect) */
 nav {
     text-align: center;
     padding: 20px 0;
     background: #000;
     border-top: 4px solid #ff0000;
     border-bottom: 4px solid #fff;
-    animation: float 4s infinite ease-in-out;
-}
-
-/* Floating Animation */
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0px); }
+    position: relative; /* Ensure it's not floating */
 }
 
 nav a {
@@ -67,12 +60,11 @@ nav a {
     display: inline-block;
     transform: skew(-10deg);
 }
-
 nav a:hover {
     color: #000;
     background: #ff0000;
     border-radius: 20px;
-    transform: scale(1.2) rotate(2deg);
+    transform: scale(1.2);
 }
 
 /* Main Sections */
@@ -183,4 +175,3 @@ button {
         font-size: 1rem;
     }
 }
-
