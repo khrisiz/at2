@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="at.js" defer></script>
+    <link rel="stylesheet" href="at.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alternative Trap - Explore the alternative music scene and culture.">
+    <title>Alternative Trap</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2093603798070348"
+            crossorigin="anonymous"></script>
+    <script>
+        // Your existing JavaScript code
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('JavaScript is working!');
+        });
+
+        // Additional JavaScript code for IQ Test and DATE TBD buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            const iqTestButton = document.getElementById('iqTestButton');
+            const dateTbdButton = document.getElementById('dateTbdButton');
+
+            iqTestButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                alert('You are about to take an IQ Test!');
+                window.open('iq.html', '_blank');
+            });
+
+            dateTbdButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                alert('DATE TBD button clicked!');
+                window.open('index2.html', '_blank');
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Alternative Trap</h1>
+        <p>high how are you </p>
+    </header>
+    <nav>
+        <a href="iq.html"> iq test</a> 
+        <a href="termsandconditionsforat.html">Terms and Conditions</a>
+    </nav>
+    <section>
+        <h1>Take an IQ Test</h1>
+        <button id="iqTestButton">IQ Test</button>
+        <button id="dateTbdButton">DATE TBD</button>
+    </section>
+    <main>
+        <section id="about">
+            <h2>About stuff</h2>
+            <p>lazy in alternative, trap, news...</p>
+        </section>
+        <section id="music">
+            <h2>the the the <h2>
+                <h2></h2>the</h2>
+            <p></p>
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+        </section>
+    </main>
+    <footer>
+        <!-- Link for CCPA opt-out -->
+        <a href="privacypolicy.html" id="doNotSellLink">Do Not Sell My Personal Information</a>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsentBanner" style="display:none;">
+        <p>We use cookies to improve your experience on our site, including cookies for personalized ads and analytics. By using our website, you consent to our use of cookies. <a href="/cookie-policy" target="_blank">Learn more</a>.</p>
+        <button id="acceptCookiesBtn">Accept Cookies</button>
+        <button id="rejectCookiesBtn">Reject Personalized Ads</button>
+        <button id="optOutSaleBtn">Opt Out of Sale of Personal Data</button>
+        <a href="/privacy-policy" target="_blank">Privacy Policy</a> | <a href="/cookie-policy" target="_blank">Cookie Policy</a>
+        <button id="withdrawConsentBtn">Withdraw Consent</button>
+    </div>
+
+    <script>
+        // Check if the user has already given consent for cookies or opted out of the sale of data
+        if (localStorage.getItem("cookiesAccepted") !== "true") {
+            document.getElementById("cookieConsentBanner").style.display = "block";
+        }
+
+        // Handle the "Accept Cookies" button click (GDPR)
+        document.getElementById("acceptCookiesBtn").onclick = function() {
+            localStorage.setItem("cookiesAccepted", "true");
+            localStorage.setItem("personalizedAdsConsent", "true");  // Consent for personalized ads
+            document.getElementById("cookieConsentBanner").style.display = "none";
+            // Initialize AdSense with personalized ads
+            initializeAds(true);
+        };
+
+        // Handle the "Reject Personalized Ads" button click (GDPR & CCPA)
+        document.getElementById("rejectCookiesBtn").onclick = function() {
+            localStorage.setItem("cookiesAccepted", "true");
+            localStorage.setItem("personalizedAdsConsent", "false");  // Reject personalized ads (CCPA opt-out)
+            document.getElementById("cookieConsentBanner").style.display = "none";
+            // Initialize AdSense without personalized ads
+            initializeAds(false);
+        };
+
+        // Handle the "Opt Out of Sale of Personal Data" button click (CCPA)
+        document.getElementById("optOutSaleBtn").onclick = function() {
+            localStorage.setItem("optOutSale", "true");  // User opted out of data sale
+            document.getElementById("cookieConsentBanner").style.display = "none";
+            alert("You have opted out of the sale of your personal data.");
+        };
+
+        // Handle the "Withdraw Consent" button click (GDPR)
+        document.getElementById("withdrawConsentBtn").onclick = function() {
+            // Remove consent information from localStorage
+            localStorage.removeItem("cookiesAccepted");
+            localStorage.removeItem("personalizedAdsConsent");
+            localStorage.removeItem("optOutSale");
+            document.getElementById("cookieConsentBanner").style.display = "block"; // Show the banner again
+            alert("Your consent has been withdrawn.");
+            // Reset AdSense settings
+            initializeAds(false); // Non-personalized ads or no ads if they withdraw consent
+        };
+
+        // Function to initialize Google AdSense based on user's consent
+        function initializeAds(personalizedAds) {
+            if (personalizedAds) {
+                // Load personalized ads (this is where you would load your AdSense scripts)
+                console.log("Personalized ads enabled");
+            } else {
+                // Load non-personalized ads (this would be an AdSense setup for non-personalized ads)
+                console.log("Non-personalized ads enabled");
+            }
+        }
+    </script>
+</body>
+</html>
+
