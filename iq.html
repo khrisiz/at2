@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        
         body {
             font-family: 'Poppins', sans-serif;
-            background: #000000;  
+            background: #000000;
             color: #000000;
             text-align: center;
             padding: 40px;
@@ -24,23 +22,23 @@
 
         header {
             text-align: center;
-            background: #000; 
-            color: #ff0033; 
+            background: #000;
+            color: #ff0033;
             padding: 50px 20px;
             border-bottom: 3px solid #ff0000;
-            text-shadow: 2px 2px 0px #dd71a3, -2px -2px 0px #000; 
+            text-shadow: 2px 2px 0px #dd71a3, -2px -2px 0px #000;
             font-size: 3rem;
             letter-spacing: 5px;
-            font-family: 'Bebas Neue', sans-serif; 
-            text-transform: uppercase; 
+            font-family: 'Bebas Neue', sans-serif;
+            text-transform: uppercase;
             margin-bottom: 30px;
             border-radius: 12px;
-            backdrop-filter: blur(5px); 
-            box-shadow: 0 8px 25px rgb(255, 255, 255); 
+            backdrop-filter: blur(5px);
+            box-shadow: 0 8px 25px rgb(255, 255, 255);
         }
 
         .quiz-container {
-            background: rgba(0, 0, 0, 0.7); 
+            background: rgba(0, 0, 0, 0.7);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.7);
@@ -54,9 +52,9 @@
             font-family: 'Bebas Neue', sans-serif;
             font-size: 2.5rem;
             margin-bottom: 40px;
-            color: #ff0033;  
-            text-shadow: 2px 2px 5px #ff0033;  
-            background: rgba(0, 0, 0, 0.7);  
+            color: #ff0033;
+            text-shadow: 2px 2px 5px #ff0033;
+            background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(6px);
             padding: 20px;
             border-radius: 12px;
@@ -120,7 +118,7 @@
         }
 
         .quiz-btn:hover {
-            background: rgba(255, 0, 51, 0.3); 
+            background: rgba(255, 0, 51, 0.3);
             color: #fff;
             transform: scale(1.1);
             box-shadow: 0 0 35px rgba(255, 0, 51, 0.9);
@@ -130,12 +128,18 @@
             font-family: 'Bebas Neue', sans-serif;
             font-size: 2rem;
             margin-top: 40px;
-            color: #ffcc33;  
+            color: #ffcc33;
             background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(5px);
             padding: 20px;
             border-radius: 12px;
-            text-shadow: 2px 2px 5px #ffcc33;  
+            text-shadow: 2px 2px 5px #ffcc33;
+        }
+
+        #timer {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 20px;
         }
 
         @keyframes fadeIn {
@@ -153,40 +157,19 @@
             50% { opacity: 0.4; }
             100% { opacity: 0.9; }
         }
- 
+
     </style>
 </head>
 <body>
+
+    <header>Alternative IQ Test</header>
+    <div class="quiz-container">
+        <div id="timer"></div>
         <div class="quiz-question" id="question"></div>
         <div id="options"></div>
         <div id="result" class="quiz-result"></div>
-        <button class="quiz-btn" id="next-btn">This will always be up and running</button>  <!-- Added the Next button -->
+        <button class="quiz-btn" id="next-btn">Next</button>
     </div>
-
-    <style>
-        .quiz-option {
-            display: block;
-            margin: 5px;
-            padding: 10px;
-            width: 200px;
-            cursor: pointer;
-        }
-        .correct {
-            background-color: rgb(255, 255, 255);
-            color: white;
-        }
-        .incorrect {
-            background-color: red;
-            color: white;
-        }
-    </style>
-</head>
-<body>
-
-    <h2 id="question"></h2>
-    <div id="options"></div>
-    <button id="next-btn" disabled>Next</button>
-    <h3 id="result"></h3>
 
     <script>
         const questions = [
@@ -205,19 +188,55 @@
                 options: ["1", "4", "9", "23"],
                 correct: 3,
             },
+            {
+                question: "If a train travels 60 miles in 1 hour, how far will it travel in 3 hours?",
+                options: ["120 miles", "180 miles", "200 miles", "240 miles"],
+                correct: 1,
+            },
+            {
+                question: "Which of these shapes is the odd one out? Circle, Triangle, Square, Rectangle",
+                options: ["Circle", "Triangle", "Square", "Rectangle"],
+                correct: 0,
+            },
         ];
 
         let currentQuestionIndex = 0;
         let score = 0;
         const randomQuestions = questions.sort(() => 0.5 - Math.random()).slice(0, 5);
+        let timeLimit = 30; // seconds per question
+        let timerInterval;
 
         const questionElement = document.getElementById('question');
         const optionsElement = document.getElementById('options');
         const nextButton = document.getElementById('next-btn');
         const resultElement = document.getElementById('result');
+        const timerElement = document.getElementById('timer');
+
+        const normalizeScore = (rawScore, totalQuestions) => {
+            const percentage = (rawScore / totalQuestions) * 100;
+            return Math.round(percentage * 0.7 + 85); // IQ range between 85–115
+        };
+
+        const startTimer = () => {
+            let timeLeft = timeLimit;
+            timerElement.textContent = `Time left: ${timeLeft}s`;
+
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                timerElement.textContent = `Time left: ${timeLeft}s`;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    nextButton.click(); // Automatically move to next question when time is up
+                }
+            }, 1000);
+        };
+
+        const stopTimer = () => {
+            clearInterval(timerInterval);
+        };
 
         const renderQuestion = () => {
-            nextButton.disabled = true; // Disable next button initially
+            nextButton.disabled = true;
             const questionData = randomQuestions[currentQuestionIndex];
             questionElement.textContent = questionData.question;
             optionsElement.innerHTML = questionData.options
@@ -226,6 +245,7 @@
                 )
                 .join('');
             attachOptionListeners();
+            startTimer(); // Start the timer when the question is rendered
         };
 
         const attachOptionListeners = () => {
@@ -244,7 +264,7 @@
                     }
 
                     disableOptions();
-                    nextButton.disabled = false; // Enable next button after selection
+                    nextButton.disabled = false;
                 });
             });
         };
@@ -256,7 +276,9 @@
         };
 
         const displayResult = () => {
-            resultElement.textContent = `Your Score: ${score} / ${randomQuestions.length}`;
+            stopTimer();
+            const iqScore = normalizeScore(score, randomQuestions.length);
+            resultElement.textContent = `Your IQ Score: ${iqScore}`;
             nextButton.style.display = 'none';
         };
 
@@ -271,3 +293,6 @@
 
         renderQuestion();
     </script>
+</body>
+</html>
+
