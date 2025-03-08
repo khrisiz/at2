@@ -8,31 +8,39 @@
 /* Importing Bold, Edgy Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Anton&display=swap');
 
+/* Importing Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap');
+
 /* General Styles */
 body {
-    font-family: 'Anton', sans-serif;
-    margin: 0;
-    padding: 2;
-    background-color: #f0f0f0;
-    color: #333;
-    position: relative; /* Ensure body is positioned relative to the viewport */
-    background-size: cover;
-}
-
-header {
-    background-color: #ffcc00;
-    color: #000;
+    font-family: 'Poppins', sans-serif;
+    background: #000000;
+    color: #000000;
     text-align: center;
-    padding: 20px;
-    border-bottom: 4px solid #ff0000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(45deg, #ffcc00, #ff9900);
-    font-family: 'Rubik Glitch', sans-serif;
-    position: sticky; /* Make header stick to the top of the viewport */
-    top: 0;
-    z-index: 100; /* Ensure header is above other elements */
+    padding: 40px;
+    margin: 0;
+    font-weight: 300;
 }
 
+/* Header Styles */
+header {
+    text-align: center;
+    background: #000;
+    color: #ff0033;
+    padding: 50px 20px;
+    border-bottom: 3px solid #ff0000;
+    text-shadow: 2px 2px 0px #dd71a3, -2px -2px 0px #000;
+    font-size: 3rem;
+    letter-spacing: 5px;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 8px 25px rgb(255, 255, 255);
+}
+
+/* Header H1 Styles */
 header h1 {
     margin: 0;
     font-size: 3rem;
@@ -40,12 +48,14 @@ header h1 {
     animation: glitch 1s infinite; /* Glitch animation */
 }
 
+/* Header Paragraph Styles */
 header p {
     margin: 5px 0 0;
     font-size: 1.2rem;
     text-shadow: 1px 1px #ff0000;
 }
 
+/* Navigation Styles */
 nav {
     background-color: #ff0000;
     color: #fff;
@@ -57,6 +67,7 @@ nav {
     border-bottom: 4px solid #fff;
 }
 
+/* Navigation Link Styles */
 nav a {
     color: #fff;
     margin: 0 15px;
@@ -69,6 +80,7 @@ nav a {
     transform: skew(-10deg);
 }
 
+/* Navigation Link Hover Styles */
 nav a:hover {
     color: #000;
     background: #ffcc00;
@@ -76,6 +88,7 @@ nav a:hover {
     transform: scale(1.2);
 }
 
+/* Section Styles */
 section {
     padding: 20px;
     margin: 20px;
@@ -91,6 +104,7 @@ section {
     align-items: center;
 }
 
+/* Section Heading Styles */
 section h1, section h2 {
     margin-top: 0;
     font-family: 'Rubik Glitch', sans-serif;
@@ -99,12 +113,14 @@ section h1, section h2 {
     text-shadow: 3px 3px 0px #fff;
 }
 
+/* Section Paragraph Styles */
 section p {
     font-size: 1.4rem;
     color: #000;
     font-family: 'Anton', sans-serif;
 }
 
+/* Button Styles */
 button {
     padding: 10px 20px;
     margin: 10px 0;
@@ -120,11 +136,13 @@ button {
     transform: skew(-5deg);
 }
 
+/* Button Hover Styles */
 button:hover {
     background-color: #555;
     transform: scale(1.1);
 }
 
+/* Footer Styles */
 footer {
     background-color: #333;
     color: #fff;
@@ -137,6 +155,7 @@ footer {
     border-top: 3px solid #fff;
 }
 
+/* Cookie Consent Banner Styles */
 #cookieConsentBanner {
     position: fixed;
     bottom: 0;
@@ -152,11 +171,13 @@ footer {
     z-index: 1000; /* Ensure banner is above other elements */
 }
 
+/* Cookie Consent Banner Paragraph Styles */
 #cookieConsentBanner p {
     margin: 0;
     flex: 1;
 }
 
+/* Cookie Consent Banner Button Styles */
 #cookieConsentBanner button {
     margin-left: 10px;
     font-family: 'Anton', sans-serif;
@@ -169,7 +190,7 @@ footer {
     100% { text-shadow: 2px 2px 0px #ff0000, -2px -2px 0px #fff; }
 }
 
-/* Scrollbar (Custom, for the Aesthetic) */
+/* Custom Scrollbar Styles */
 ::-webkit-scrollbar {
     width: 12px;
 }
@@ -181,6 +202,134 @@ footer {
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(45deg, #ff0000, #fff);
     border-radius: 10px;
+}
+
+/* Quiz Container Styles */
+.quiz-container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.7);
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Quiz Question Styles */
+.quiz-question {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #ff0033;
+    text-shadow: 2px 2px 5px #ff0033;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+/* Quiz Option Styles */
+.quiz-option {
+    font-family: 'Bebas Neue', sans-serif;
+    display: block;
+    margin: 15px 0;
+    padding: 18px;
+    border: 2px solid #ff0033;
+    border-radius: 8px;
+    background: transparent;
+    color: #ff0033;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+    transition: all 0.4s ease;
+    opacity: 0;
+    animation: popUp 1s ease-out forwards;
+    box-shadow: 0 0 15px rgb(255, 255, 255);
+}
+
+.quiz-option:hover {
+    background: #ff0033;
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 0, 51, 0.8);
+}
+
+/* Quiz Button Styles */
+.quiz-btn {
+    margin-top: 30px;
+    padding: 18px 30px;
+    border: 2px solid #ff0033;
+    background: transparent;
+    color: #ff0000;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 25px rgba(255, 0, 51, 0.8);
+    position: relative;
+    outline: none;
+    opacity: 0.9;
+}
+
+.quiz-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 0, 0);
+    border-radius: 8px;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.quiz-btn:hover {
+    background: rgba(255, 0, 51, 0.3);
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 0 35px rgba(255, 0, 51, 0.9);
+}
+
+/* Quiz Result Styles */
+.quiz-result {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    margin-top: 40px;
+    color: #ffcc33;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    border-radius: 12px;
+    text-shadow: 2px 2px 5px #ffcc33;
+}
+
+/* Timer Styles */
+#timer {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes popUp {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.9; }
+    50% { opacity: 0.4; }
+    100% { opacity: 0.9; }
 }
 
 /* Responsive Design */
