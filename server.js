@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const WebSocket = require('ws');
 
-// Create an HTTP server that serves index.html
+// Serve the HTML file
 const server = http.createServer((req, res) => {
   if (req.url === '/') {
     fs.readFile(path.join(__dirname, 'index.html'), (err, data) => {
@@ -17,21 +17,21 @@ const server = http.createServer((req, res) => {
     });
   } else {
     res.writeHead(404);
-    res.end('Not found');
+    res.end('Not Found');
   }
 });
 
-// Attach WebSocket to the HTTP server
+// WebSocket logic
 const wss = new WebSocket.Server({ server });
 
 let waitingClient = null;
 const pairs = new Map();
 
 wss.on('connection', (ws) => {
-  console.log('New client connected');
+  console.log('New user connected');
 
   if (waitingClient) {
-    // Pair users
+    // Pair clients
     pairs.set(ws, waitingClient);
     pairs.set(waitingClient, ws);
 
@@ -47,13 +47,11 @@ wss.on('connection', (ws) => {
   ws.on('message', (message) => {
     const partner = pairs.get(ws);
     if (partner && partner.readyState === WebSocket.OPEN) {
-      partner.send(message);
+      partner.send(message.toString());
     }
   });
 
   ws.on('close', () => {
-    console.log('Client disconnected');
-
     const partner = pairs.get(ws);
     if (partner && partner.readyState === WebSocket.OPEN) {
       partner.send('❌ Your partner has disconnected.');
@@ -62,11 +60,13 @@ wss.on('connection', (ws) => {
 
     pairs.delete(ws);
     if (waitingClient === ws) waitingClient = null;
+
+    console.log('User disconnected');
   });
 });
 
-// Start server
-const PORT = 3001;
+// Use Render-provided port or fallback
+const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`🌐 Server running at http://localhost:3001`);
+  console.log(`🌐 Server running at http://localhost:${PORT}`);
 });
